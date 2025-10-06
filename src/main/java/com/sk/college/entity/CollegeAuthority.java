@@ -1,20 +1,23 @@
-package com.sk.college.model;
+package com.sk.college.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "COLLEGE_AUTHORITIES")
-@NoArgsConstructor
 @Getter
 @Setter
 public class CollegeAuthority {
-    @Id()
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     @Column(name = "authority", nullable = false, unique = true)
     private String authority;
+
+    @ManyToMany(mappedBy = "roleAuthorities")
+    private Set<CollegeRole> roles;
 }

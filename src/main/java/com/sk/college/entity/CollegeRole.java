@@ -1,8 +1,7 @@
-package com.sk.college.model;
+package com.sk.college.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
@@ -10,7 +9,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "COLLEGE_ROLES")
-@NoArgsConstructor
 @Getter
 @Setter
 public class CollegeRole {
@@ -21,9 +19,14 @@ public class CollegeRole {
     @Column(name = "role", nullable = false, unique = true)
     private String role;
 
-    @Column(name = "authorities", nullable = false)
-    private long[] authorityIds;
-
     @ManyToMany(mappedBy = "userRoles")
     private Set<CollegeUser> users = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "COLLEGE_ROLE_AUTHORITIES",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id")
+    )
+    private Set<CollegeAuthority> roleAuthorities;
 }

@@ -1,14 +1,12 @@
 package com.sk.college.dto;
 
-import com.sk.college.model.CollegeRole;
+import com.sk.college.entity.CollegeRole;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@NoArgsConstructor
 public class CollegeUserDto {
 
     @Getter

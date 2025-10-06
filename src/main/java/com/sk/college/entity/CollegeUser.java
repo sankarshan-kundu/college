@@ -1,20 +1,16 @@
-package com.sk.college.model;
+package com.sk.college.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Table(name = "COLLEGE_USERS")
-@NoArgsConstructor
 @Getter
 @Setter
 public class CollegeUser {
@@ -46,7 +42,7 @@ public class CollegeUser {
     @Column(name = "last_login", nullable = true)
     private LocalDateTime lastLogin;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "COLLEGE_USER_ROLES",
             joinColumns = @JoinColumn(name = "user_id"),

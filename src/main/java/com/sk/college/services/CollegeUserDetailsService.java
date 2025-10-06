@@ -1,6 +1,6 @@
 package com.sk.college.services;
 
-import com.sk.college.model.CollegeUser;
+import com.sk.college.entity.CollegeUser;
 import com.sk.college.model.CollegeUserDetails;
 import com.sk.college.repo.CollegeUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
